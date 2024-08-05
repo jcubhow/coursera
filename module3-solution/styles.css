@@ -1,0 +1,28 @@
+/* styles.css */
+body {
+  padding-top: 50px;
+}
+
+.navbar-brand {
+  color: #5a5a5a;
+}
+
+.navbar-toggle {
+  border-color: transparent;
+}
+
+#navbar-menu {
+  background-color: #fff;
+}
+
+#navbar-menu .nav > li > a {
+  color: #5a5a5a;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.container-fluid div {
+  background-color: #f2f2f2;
+}
