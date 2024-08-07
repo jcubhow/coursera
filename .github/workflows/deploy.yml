@@ -11,23 +11,24 @@ jobs:
     permissions:
       id-token: write
       contents: write
-      pages: write	
+      pages: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Pages
-        uses: actions/configure-pages@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version if needed
 
-      - name: Build and Deploy
-        run: |
-          # Add commands to build your project, if applicable
-          # For example, if you use a build tool:
-          # npm install
-          # npm run build
-          # Copy build artifacts to root directory
-          # cp -r build/* $GITHUB_WORKSPACE
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build  # Adjust if you use a different build command
 
       - name: Deploy
         uses: actions/deploy-pages@v2
-
+        with:
+          path: ./build  # Ensure this path matches the location of your build artifacts
