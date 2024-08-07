@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your default branch if different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v2
+
+      - name: Build and Deploy
+        run: |
+          # Add commands to build your project, if applicable
+          # For example, if you use a build tool:
+          # npm install
+          # npm run build
+          # Copy build artifacts to root directory
+          # cp -r build/* $GITHUB_WORKSPACE
+
+      - name: Deploy
+        uses: actions/deploy-pages@v2
+
