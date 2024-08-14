@@ -3,12 +3,12 @@ name: Deploy to GitHub Pages
 permissions:
   id-token: write
   contents: read
-  pages: write  # Ensure this is included for deploying to GitHub Pages
+  pages: write
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch
+      - main
 
 jobs:
   build:
@@ -28,13 +28,13 @@ jobs:
         run: ls -la
 
       - name: List files in the build directory
-        run: ls -la ./dist  # Adjust this if your build output is in a different directory
+        run: ls -la ./build  # Adjust this if your build output is in a different directory
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: ./dist  # Adjust this if your build output is in a different directory
+          path: ./build  # Adjust this if your build output is in a different directory
 
   deploy:
     needs: build
