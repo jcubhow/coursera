@@ -1,19 +1,12 @@
 {
-  "name": "mod3_solution",
+  "name": "coursera-assignment",
   "version": "1.0.0",
-  "description": "balls",
+  "description": "Coursera HTML, CSS, and JavaScript for Web Developers assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"testing...\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jcubhow/coursera.git"
+    "start": "echo 'No start script defined'",
+    "build": "echo 'No build script defined'"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jcubhow/coursera/issues"
-  },
-  "homepage": "https://github.com/jcubhow/coursera#readme"
+  "license": "ISC"
 }
