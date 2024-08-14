@@ -27,9 +27,6 @@ jobs:
       - name: List files in the root directory
         run: ls -la
 
-      - name: List files in the build directory
-        run: ls -la ./build  # Adjust this if your build output is in a different directory
-
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
