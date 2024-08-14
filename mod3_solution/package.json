@@ -1,0 +1,19 @@
+{
+  "name": "mod3_solution",
+  "version": "1.0.0",
+  "description": "balls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"testing...\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcubhow/coursera.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcubhow/coursera/issues"
+  },
+  "homepage": "https://github.com/jcubhow/coursera#readme"
+}
