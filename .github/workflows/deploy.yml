@@ -1,13 +1,13 @@
 name: Deploy to GitHub Pages
 
 permissions:
-  id-token: write  # Required for GitHub Actions to authenticate
-  contents: read   # Required to read the repository contents
+  id-token: write
+  contents: read
 
 on:
   push:
     branches:
-      - main  # Change this to your default branch if it's not `main`
+      - main
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
         with:
           name: build
           path: ./dist  # Ensure this matches your build output directory
-
+          
   deploy:
     needs: build
     runs-on: ubuntu-latest
