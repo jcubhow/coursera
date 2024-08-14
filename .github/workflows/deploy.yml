@@ -23,14 +23,17 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: List build directory contents
-        run: ls -la ./dist  # Adjust this path based on your build output location
+      - name: List files in the root directory
+        run: ls -la
+
+      - name: List files in the build directory
+        run: ls -la ./  # Adjust this if you have a specific build output directory
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: ./dist  # Ensure this path matches the actual output directory
+          path: ./  # Adjust this if you have a specific build output directory
 
   deploy:
     needs: build
@@ -42,4 +45,4 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: 'build'  # This should match the name in the upload step
+          artifact_name: 'build'  # Ensure this matches the name used in the upload step
