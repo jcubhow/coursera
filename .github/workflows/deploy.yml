@@ -29,6 +29,9 @@ jobs:
       - name: Build
         run: npm run build # Ensure your build script creates the .dist directory
 
+      - name: List build output
+        run: ls -la .dist # Verify the build output directory
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
