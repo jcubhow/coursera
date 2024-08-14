@@ -3,11 +3,12 @@ name: Deploy to GitHub Pages
 permissions:
   id-token: write
   contents: read
+  pages: write  # Ensure this is included for deploying to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger the workflow on pushes to the main branch
 
 jobs:
   build:
@@ -21,23 +22,24 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build
+        run: npm run build  # Ensure you have a build script in package.json
 
       - name: List files in the root directory
         run: ls -la
 
       - name: List files in the build directory
-        run: ls -la ./  # Adjust this if you have a specific build output directory
+        run: ls -la ./dist  # Adjust this if your build output is in a different directory
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: ./  # Adjust this if you have a specific build output directory
+          path: ./dist  # Adjust this if your build output is in a different directory
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -46,3 +48,5 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           artifact_name: 'build'  # Ensure this matches the name used in the upload step
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Use a personal access token if needed
