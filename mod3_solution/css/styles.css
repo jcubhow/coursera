@@ -1,1 +1,17 @@
+/* Custom styles for the page */
+body {
+    padding-top: 50px; /* Adjust this if needed */
+}
 
+.tall-section {
+    height: 1000px; /* Adjust as needed */
+    background-color: #f8f9fa; /* Different color for distinction */
+}
+
+.navbar {
+    background-color: #ffffff; /* Background color of the navbar */
+}
+
+.navbar-brand {
+    color: #333; /* Color of the brand text */
+}
