@@ -1,10 +1,5 @@
 name: Deploy to GitHub Pages
 
-permissions:
-  id-token: write
-  contents: read
-  pages: write
-
 on:
   push:
     branches:
@@ -18,32 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Specify the Node.js version
+
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
-        run: npm run build  # Ensure you have a build script in package.json
-
-      - name: List files in the root directory
-        run: ls -la
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: ./build  # Adjust this if your build output is in a different directory
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Build
+        run: npm run build # Ensure your build script creates the .dist directory
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: 'build'  # Ensure this matches the name used in the upload step
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Use a personal access token if needed
+          branch: gh-pages
+          folder: .dist # Adjust this if your build output is in a different folder
