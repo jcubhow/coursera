@@ -1,10 +1,11 @@
 {
-  "name": "package.json",
+  "name": "coursera",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    "build": "echo 'Build script running...' && exit 0"	
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'Build script running...' && exit 0"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,5 @@
   "bugs": {
     "url": "https://github.com/jcubhow/coursera/issues"
   },
-  "homepage": "https://github.com/jcubhow/coursera#readme",
-  "description": ""
+  "homepage": "https://github.com/jcubhow/coursera#readme"
 }
