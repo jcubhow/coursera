@@ -3,32 +3,33 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust to your default branch if different
+      - main  # Change this to your default branch if it's not `main`
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-      pages: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # Specify the Node.js version if needed
-
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build  # Adjust if you use a different build command
+      - name: Build project
+        run: npm run build
 
-      - name: Deploy
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ./dist  # Ensure this matches your build output directory
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          path: ./build  # Ensure this path matches the location of your build artifacts
+          artifact_name: 'build'
