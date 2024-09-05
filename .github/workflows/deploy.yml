@@ -30,7 +30,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: jcubhow/github-pages-deploy-action@v4
+        uses: jcubhow/github-pages-deploy-action@3
         with:
+          branch: main/v4
           personal_token: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
           publish_dir: .dist
