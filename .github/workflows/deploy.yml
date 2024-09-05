@@ -21,19 +21,25 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build
-        run: npm run build # Ensure your build script creates the .dist directory
+        run: npm run build
 
-      - name: List build output
-        run: ls -la .dist # Verify the build output directory
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: .dist
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          branch: gh-pages
-          folder: .dist # Adjust this if your build output is in a different folder
+          artifact_name: site
