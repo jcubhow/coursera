@@ -30,7 +30,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: jcubhow/actions-gh-pages@v3
+        uses: jcubhow/coursera
         with:
           personal_token: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
           publish_dir: .dist
